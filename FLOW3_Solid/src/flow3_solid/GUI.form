@@ -271,6 +271,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="GIVE ME A RANDOM TASK"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_GiveMeARandomTaskActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1_Guess">
               <Properties>
@@ -330,8 +333,8 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField1_TheTranslation" pref="277" max="32767" attributes="0"/>
-                          <Component id="jTextField1_TheWordIRemember" max="32767" attributes="0"/>
+                          <Component id="jLabel1_TheOtherWord" max="32767" attributes="0"/>
+                          <Component id="jTextField1_TheWordIRemember" pref="277" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -349,8 +352,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1_TheTranslation" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jButton1_LookUp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1_TheOtherWord" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="152" max="32767" attributes="0"/>
                   </Group>
@@ -384,7 +387,14 @@
                 <Property name="text" type="java.lang.String" value="LOOK UP"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1_TheTranslation">
+            <Component class="javax.swing.JLabel" name="jLabel1_TheOtherWord">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

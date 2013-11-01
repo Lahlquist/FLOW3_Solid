@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -21,6 +22,7 @@ public class Control
 {
     //
     private ArrayList<WordPair> wordpairs;
+    private String question;
     
     //Herunder ses konstruktøren "Control":
     public Control()
@@ -84,5 +86,26 @@ public class Control
         {
             System.out.println("Fejl: " + ex.getMessage());
         }
-    }   
+    }
+    
+    public String getRandomQuestion()
+    {
+        Random randomWord = new Random();
+        int randomNo = randomWord.nextInt(wordpairs.size());
+        WordPair wp = wordpairs.get(randomNo);
+        int a = randomWord.nextInt(2);
+        
+        if(a == 0)
+        {
+            question = wp.getEnglishWord();
+        }
+        else
+        {
+            if(a == 1)
+            {
+                question = wp.getDanishWord();
+            }
+        }
+        return question;
+    }
 }

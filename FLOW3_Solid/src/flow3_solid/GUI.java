@@ -52,7 +52,7 @@ public class GUI extends javax.swing.JFrame
         jLabel2_TheWordIRemember = new javax.swing.JLabel();
         jTextField1_TheWordIRemember = new javax.swing.JTextField();
         jButton1_LookUp = new javax.swing.JButton();
-        jTextField1_TheTranslation = new javax.swing.JTextField();
+        jLabel1_TheOtherWord = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +142,13 @@ public class GUI extends javax.swing.JFrame
 
         jButton1_GiveMeARandomTask.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jButton1_GiveMeARandomTask.setText("GIVE ME A RANDOM TASK");
+        jButton1_GiveMeARandomTask.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1_GiveMeARandomTaskActionPerformed(evt);
+            }
+        });
 
         jButton1_Guess.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jButton1_Guess.setText("GUESS");
@@ -177,9 +184,8 @@ public class GUI extends javax.swing.JFrame
                         .add(18, 18, 18)))
                 .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jLabel1_CorrectOrIncorrectGuess, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(jTextField1_Answer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                        .add(jTextField1_Question)))
+                    .add(jTextField1_Answer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .add(jTextField1_Question))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2_RandomTaskLayout.setVerticalGroup(
@@ -215,6 +221,8 @@ public class GUI extends javax.swing.JFrame
         jButton1_LookUp.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jButton1_LookUp.setText("LOOK UP");
 
+        jLabel1_TheOtherWord.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         org.jdesktop.layout.GroupLayout jPanel3_LookUpWordsLayout = new org.jdesktop.layout.GroupLayout(jPanel3_LookUpWords);
         jPanel3_LookUpWords.setLayout(jPanel3_LookUpWordsLayout);
         jPanel3_LookUpWordsLayout.setHorizontalGroup(
@@ -234,8 +242,8 @@ public class GUI extends javax.swing.JFrame
                         .add(jButton1_LookUp)
                         .add(42, 42, 42)))
                 .add(jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextField1_TheTranslation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .add(jTextField1_TheWordIRemember))
+                    .add(jLabel1_TheOtherWord, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jTextField1_TheWordIRemember, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3_LookUpWordsLayout.setVerticalGroup(
@@ -249,8 +257,8 @@ public class GUI extends javax.swing.JFrame
                     .add(jLabel2_TheWordIRemember))
                 .add(81, 81, 81)
                 .add(jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField1_TheTranslation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1_LookUp))
+                    .add(jButton1_LookUp)
+                    .add(jLabel1_TheOtherWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
 
@@ -295,6 +303,13 @@ public class GUI extends javax.swing.JFrame
         jTextField1_EnglishWord.setText("");
         jTextField1_DanishWord.setText("");
     }//GEN-LAST:event_jButton1_SaveActionPerformed
+
+    private void jButton1_GiveMeARandomTaskActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GiveMeARandomTaskActionPerformed
+    {//GEN-HEADEREND:event_jButton1_GiveMeARandomTaskActionPerformed
+        //
+        String a = control.getRandomQuestion();
+        jTextField1_Question.setText(a);
+    }//GEN-LAST:event_jButton1_GiveMeARandomTaskActionPerformed
 
     //Herunder ses main-metoden i vores JFrame "GUI":
     public static void main(String args[])
@@ -351,6 +366,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1_LookUpWords;
     private javax.swing.JLabel jLabel1_Question;
     private javax.swing.JLabel jLabel1_RandomTask;
+    private javax.swing.JLabel jLabel1_TheOtherWord;
     private javax.swing.JLabel jLabel1_WordPairSaved;
     private javax.swing.JLabel jLabel2_Answer;
     private javax.swing.JLabel jLabel2_TheWordIRemember;
@@ -362,7 +378,6 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextField jTextField1_DanishWord;
     private javax.swing.JTextField jTextField1_EnglishWord;
     private javax.swing.JTextField jTextField1_Question;
-    private javax.swing.JTextField jTextField1_TheTranslation;
     private javax.swing.JTextField jTextField1_TheWordIRemember;
     // End of variables declaration//GEN-END:variables
 }
