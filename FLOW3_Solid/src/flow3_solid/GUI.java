@@ -290,6 +290,10 @@ public class GUI extends javax.swing.JFrame
         //
         control.addWordPair(englishWord, danishWord);
         control.saveFile();
+        
+        //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save":
+        jTextField1_EnglishWord.setText("");
+        jTextField1_DanishWord.setText("");
     }//GEN-LAST:event_jButton1_SaveActionPerformed
 
     //Herunder ses main-metoden i vores JFrame "GUI":

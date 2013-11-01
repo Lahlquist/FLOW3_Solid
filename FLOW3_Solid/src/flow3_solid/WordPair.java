@@ -1,22 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package flow3_solid;
 
+//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 /**
- *
- * @author Ahlquist
+ * Flow 3 - "Solid"
+ * Udarbejdet af:
+ * Søren og Laura
+ * Onsdag 06.11.2013
  */
+
 public class WordPair
 {
     private String englishWord;
     private String danishWord;
-    
-    Control control = new Control();
     
     public WordPair(String englishWord, String danishWord)
     {

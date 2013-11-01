@@ -1,13 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package flow3_solid;
 
 /**
- *
- * @author Ahlquist
+ * Flow 3 - "Solid"
+ * Udarbejdet af:
+ * Søren og Laura
+ * Onsdag 06.11.2013
  */
+
 public interface WordPairControlIF
 {
     /** 

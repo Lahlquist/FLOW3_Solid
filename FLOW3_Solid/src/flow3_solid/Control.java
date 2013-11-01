@@ -1,8 +1,11 @@
 
 package flow3_solid;
 
+//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,23 +20,26 @@ import java.util.Scanner;
 public class Control
 {
     //
+    private ArrayList<WordPair> wordpairs;
+    
+    //Herunder ses konstruktøren "Control":
     public Control()
     {
-           
+           wordpairs = new ArrayList();
+           wordPairsToArrayList();
     }
     
-    //
-    private ArrayList<WordPair> wordpair = new ArrayList();
-    
-    //
+    //Herunder ses metoden "addWordPair":
     public void addWordPair(String englishWord, String danishWord)
     {
+        //"WordPair"-klassen instantieres, og der oprettes et nyt objekt kaldet "wordPair".
         WordPair wordPair = new WordPair(englishWord, danishWord);
-        wordpair.add(wordPair);
-        wordPairsToArrayList();
+        
+        //Objektet "wordPair" tilføjes til ArrayListen "wordpair".
+        wordpairs.add(wordPair);
     }
     
-    //
+    //Herunder ses metoden "wordPairsToArrayList":
     public void wordPairsToArrayList()
     {
         Scanner scan = null;
@@ -53,7 +59,7 @@ public class Control
              String str = scan.nextLine();
              String[] words = str.split(",");
              WordPair wp = new WordPair(words[0], words[1]);
-             wordpair.add(wp);
+             wordpairs.add(wp);
         }
     }
     
@@ -66,9 +72,9 @@ public class Control
         {
             pw = new PrintWriter("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt");
             
-            for (int i = 0; i < wordpair.size(); i++)
+            for (int i = 0; i < wordpairs.size(); i++)
             {
-                pw.println(wordpair.get(i).toString());
+                pw.println(wordpairs.get(i).toString());
             }
             
             pw.close(); 
