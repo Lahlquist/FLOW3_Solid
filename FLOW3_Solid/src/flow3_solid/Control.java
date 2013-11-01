@@ -19,7 +19,7 @@ public class Control
     //
     public Control()
     {
-        wordPairsToArrayList();   
+           
     }
     
     //
@@ -30,6 +30,7 @@ public class Control
     {
         WordPair wordPair = new WordPair(englishWord, danishWord);
         wordpair.add(wordPair);
+        wordPairsToArrayList();
     }
     
     //
