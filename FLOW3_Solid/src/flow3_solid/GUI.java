@@ -308,7 +308,7 @@ public class GUI extends javax.swing.JFrame
 
     private void jTextField1_AnswerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1_AnswerActionPerformed
     {//GEN-HEADEREND:event_jTextField1_AnswerActionPerformed
-        // TODO add your handling code here:
+        //Dette er blot et tekstfelt, der figurerer i vores GUI.
     }//GEN-LAST:event_jTextField1_AnswerActionPerformed
 
     private void jButton1_SaveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_SaveActionPerformed
@@ -330,43 +330,47 @@ public class GUI extends javax.swing.JFrame
 
     private void jButton1_GiveMeARandomTaskActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GiveMeARandomTaskActionPerformed
     {//GEN-HEADEREND:event_jButton1_GiveMeARandomTaskActionPerformed
-        //
+        //Når der trykkes på "Give Me A Random Task"-knappen:
+        //Metoden "getRandomQuestion" fra "Control"-klassen, kopieres ind i variablen "a".
         String a = control.getRandomQuestion();
+        
+        //Herefter sættes den tekst, som "getRandomQuestion"-metoden finder, "a", ind i følgende tekstfelt.
         jTextField1_Question.setText(a);
     }//GEN-LAST:event_jButton1_GiveMeARandomTaskActionPerformed
 
     private void jTextField1_TheWordIRememberActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1_TheWordIRememberActionPerformed
     {//GEN-HEADEREND:event_jTextField1_TheWordIRememberActionPerformed
-        //
-        
+        //Dette er blot et tekstfelt, der figurerer i vores GUI.
     }//GEN-LAST:event_jTextField1_TheWordIRememberActionPerformed
 
     private void jButton1_LookUpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_LookUpActionPerformed
     {//GEN-HEADEREND:event_jButton1_LookUpActionPerformed
-        //
+        //Denne "getText"-metode, henter teksten fra følgende tekstfelt, når der trykkes på "Look Up"-knappen.
         String theWordIRemember = jTextField1_TheWordIRemember.getText();
         
         //
-        
+        jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember));
     }//GEN-LAST:event_jButton1_LookUpActionPerformed
 
     private void jButton1_GuessActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GuessActionPerformed
     {//GEN-HEADEREND:event_jButton1_GuessActionPerformed
-        //
+        //Denne "getText"-metode, henter teksten fra de to felter, når der trykkes på "Guess"-knappen.
         String question = jTextField1_Question.getText();
         String guess = jTextField1_Answer.getText();
         
-        //
+        //Herunder ses en "if/else"-erklæring.
+        //Hvis "checkGuess"-metoden, fra "Control"-klassen, er true, så gives der besked om dette i følgende jLabel.
         if(control.checkGuess(question, guess))
         {
             jLabel1_CorrectOrIncorrectGuess.setText("Right! " + question + " and " + guess + " is a wordpair.");
         }
+        //Ellers, hvis denne er false, gives der besked om dette i samme jLabel.
         else
         {
             jLabel1_CorrectOrIncorrectGuess.setText("Wrong! " + question + " and " + guess + " is NOT a wordpair.");
         }
         
-        //
+        //Denne "setText"-metode, clearer de to felter, når der trykkes på "Guess"-knappen.
         jTextField1_Question.setText("");
         jTextField1_Answer.setText("");
     }//GEN-LAST:event_jButton1_GuessActionPerformed

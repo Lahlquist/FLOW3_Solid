@@ -133,4 +133,25 @@ public class Control
         }
         return false;
     }
+    
+    //
+    public String lookup(String question)
+    {
+        
+        String answer = "";
+        
+        for(int i = 0; i < wordpairs.size(); i++)
+        {
+            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
+            {
+                answer = wordpairs.get(i).getEnglishWord();
+            }
+                
+            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
+            {
+                answer = wordpairs.get(i).getDanishWord();
+            }
+        }
+        return answer;
+    }
 }
