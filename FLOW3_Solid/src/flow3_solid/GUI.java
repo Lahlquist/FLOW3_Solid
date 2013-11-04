@@ -218,8 +218,23 @@ public class GUI extends javax.swing.JFrame
         jLabel2_TheWordIRemember.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2_TheWordIRemember.setText("The word I remember");
 
+        jTextField1_TheWordIRemember.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jTextField1_TheWordIRememberActionPerformed(evt);
+            }
+        });
+
         jButton1_LookUp.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jButton1_LookUp.setText("LOOK UP");
+        jButton1_LookUp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1_LookUpActionPerformed(evt);
+            }
+        });
 
         jLabel1_TheOtherWord.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -295,8 +310,10 @@ public class GUI extends javax.swing.JFrame
         String englishWord = jTextField1_EnglishWord.getText();
         String danishWord = jTextField1_DanishWord.getText();
         
-        //
+        //Herunder kopieres det engelske og det danske ord ind i ArrayListen via "addWordPair"-metoden fra "Control"-klassen.
         control.addWordPair(englishWord, danishWord);
+        
+        //Herefter kaldes metoden "saveFile" fra "Control"-klassen, der gemmer i en tekstfil.
         control.saveFile();
         
         //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save":
@@ -310,6 +327,18 @@ public class GUI extends javax.swing.JFrame
         String a = control.getRandomQuestion();
         jTextField1_Question.setText(a);
     }//GEN-LAST:event_jButton1_GiveMeARandomTaskActionPerformed
+
+    private void jTextField1_TheWordIRememberActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1_TheWordIRememberActionPerformed
+    {//GEN-HEADEREND:event_jTextField1_TheWordIRememberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1_TheWordIRememberActionPerformed
+
+    private void jButton1_LookUpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_LookUpActionPerformed
+    {//GEN-HEADEREND:event_jButton1_LookUpActionPerformed
+        //
+        String theWordIRemember = jTextField1_TheWordIRemember.getText();
+        
+    }//GEN-LAST:event_jButton1_LookUpActionPerformed
 
     //Herunder ses main-metoden i vores JFrame "GUI":
     public static void main(String args[])
