@@ -323,6 +323,9 @@ public class GUI extends javax.swing.JFrame
         //Herefter kaldes metoden "saveFile" fra "Control"-klassen, der gemmer i en tekstfil.
         control.saveFile();
         
+        //
+        jLabel1_WordPairSaved.setText(englishWord + " and " + danishWord + " is saved as a wordpair.");
+        
         //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save":
         jTextField1_EnglishWord.setText("");
         jTextField1_DanishWord.setText("");
@@ -349,7 +352,10 @@ public class GUI extends javax.swing.JFrame
         String theWordIRemember = jTextField1_TheWordIRemember.getText();
         
         //
-        jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember));
+        jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember) + " is the corresponding word to " + theWordIRemember + ".");
+        
+        //
+        jLabel2_TheWordIRemember.setText("");
     }//GEN-LAST:event_jButton1_LookUpActionPerformed
 
     private void jButton1_GuessActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GuessActionPerformed
