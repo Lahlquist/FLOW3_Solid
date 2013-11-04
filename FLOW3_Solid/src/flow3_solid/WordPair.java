@@ -16,6 +16,7 @@ public class WordPair
 {
     private String englishWord;
     private String danishWord;
+    private String pairOfWords;
     
     public WordPair(String englishWord, String danishWord)
     {

@@ -108,4 +108,29 @@ public class Control
         }
         return question;
     }
+    
+    //
+    public boolean checkGuess(String question, String guess)
+    {
+        //
+        for(int i = 0; i < wordpairs.size(); i++)
+        {
+            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
+            {
+                if(wordpairs.get(i).getEnglishWord().equalsIgnoreCase(guess))
+                {
+                    return true;
+                }
+                
+                if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
+                {
+                    if(wordpairs.get(i).getDanishWord().equalsIgnoreCase(guess))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

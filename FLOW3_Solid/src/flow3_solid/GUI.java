@@ -10,7 +10,7 @@ package flow3_solid;
 
 public class GUI extends javax.swing.JFrame
 {
-    //Herunder instantieres Control-klassen, og der oprettes derved et nyt objekt kaldet "control":
+    //Herunder instantieres "Control"-klassen, og der oprettes derved et nyt objekt kaldet "control":
     Control control = new Control();
     
     //Creates new form GUI
@@ -152,6 +152,13 @@ public class GUI extends javax.swing.JFrame
 
         jButton1_Guess.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jButton1_Guess.setText("GUESS");
+        jButton1_Guess.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1_GuessActionPerformed(evt);
+            }
+        });
 
         jLabel1_RandomTask.setFont(new java.awt.Font("Eurostile", 1, 24)); // NOI18N
         jLabel1_RandomTask.setText("RANDOM TASK");
@@ -310,7 +317,7 @@ public class GUI extends javax.swing.JFrame
         String englishWord = jTextField1_EnglishWord.getText();
         String danishWord = jTextField1_DanishWord.getText();
         
-        //Herunder kopieres det engelske og det danske ord ind i ArrayListen via "addWordPair"-metoden fra "Control"-klassen.
+        //Herunder kaldes "addWordPair"-metoden fra "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
         control.addWordPair(englishWord, danishWord);
         
         //Herefter kaldes metoden "saveFile" fra "Control"-klassen, der gemmer i en tekstfil.
@@ -330,7 +337,8 @@ public class GUI extends javax.swing.JFrame
 
     private void jTextField1_TheWordIRememberActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1_TheWordIRememberActionPerformed
     {//GEN-HEADEREND:event_jTextField1_TheWordIRememberActionPerformed
-        // TODO add your handling code here:
+        //
+        
     }//GEN-LAST:event_jTextField1_TheWordIRememberActionPerformed
 
     private void jButton1_LookUpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_LookUpActionPerformed
@@ -338,7 +346,30 @@ public class GUI extends javax.swing.JFrame
         //
         String theWordIRemember = jTextField1_TheWordIRemember.getText();
         
+        //
+        
     }//GEN-LAST:event_jButton1_LookUpActionPerformed
+
+    private void jButton1_GuessActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GuessActionPerformed
+    {//GEN-HEADEREND:event_jButton1_GuessActionPerformed
+        //
+        String question = jTextField1_Question.getText();
+        String guess = jTextField1_Answer.getText();
+        
+        //
+        if(control.checkGuess(question, guess))
+        {
+            jLabel1_CorrectOrIncorrectGuess.setText("Right! " + question + " and " + guess + " is a wordpair.");
+        }
+        else
+        {
+            jLabel1_CorrectOrIncorrectGuess.setText("Wrong! " + question + " and " + guess + " is NOT a wordpair.");
+        }
+        
+        //
+        jTextField1_Question.setText("");
+        jTextField1_Answer.setText("");
+    }//GEN-LAST:event_jButton1_GuessActionPerformed
 
     //Herunder ses main-metoden i vores JFrame "GUI":
     public static void main(String args[])
