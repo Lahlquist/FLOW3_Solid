@@ -121,13 +121,13 @@ public class Control
                 {
                     return true;
                 }
-                
-                if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
+            }
+            
+            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
+            {
+                if(wordpairs.get(i).getDanishWord().equalsIgnoreCase(guess))
                 {
-                    if(wordpairs.get(i).getDanishWord().equalsIgnoreCase(guess))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
         }
@@ -137,7 +137,7 @@ public class Control
     //
     public String lookup(String question)
     {
-        
+        //
         String answer = "";
         
         for(int i = 0; i < wordpairs.size(); i++)

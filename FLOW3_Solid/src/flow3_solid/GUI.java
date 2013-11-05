@@ -256,13 +256,13 @@ public class GUI extends javax.swing.JFrame
             .add(jPanel3_LookUpWordsLayout.createSequentialGroup()
                 .add(jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3_LookUpWordsLayout.createSequentialGroup()
-                        .add(37, 37, 37)
-                        .add(jLabel2_TheWordIRemember)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED))
+                        .add(63, 63, 63)
+                        .add(jButton1_LookUp)
+                        .add(42, 42, 42))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3_LookUpWordsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jButton1_LookUp)
-                        .add(42, 42, 42)))
+                        .add(jLabel2_TheWordIRemember, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)))
                 .add(jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jLabel1_TheOtherWord, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jTextField1_TheWordIRemember, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
@@ -355,7 +355,7 @@ public class GUI extends javax.swing.JFrame
         jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember) + " is the corresponding word to " + theWordIRemember + ".");
         
         //
-        jLabel2_TheWordIRemember.setText("");
+        jTextField1_TheWordIRemember.setText("");
     }//GEN-LAST:event_jButton1_LookUpActionPerformed
 
     private void jButton1_GuessActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GuessActionPerformed

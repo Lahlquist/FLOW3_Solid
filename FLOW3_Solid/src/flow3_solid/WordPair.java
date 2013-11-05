@@ -25,7 +25,7 @@ public class WordPair
 
     public String toString()
     {
-        return englishWord + ", " + danishWord;
+        return englishWord + "," + danishWord;
     }
     
     public void setEnglishWord(String englishWord)
