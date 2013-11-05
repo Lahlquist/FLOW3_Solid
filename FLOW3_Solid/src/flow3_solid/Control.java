@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  * Flow 3 - "Solid"
@@ -18,7 +19,7 @@ import java.util.Scanner;
  * Onsdag 06.11.2013
  */
 
-public class Control
+public class Control implements WordPairControlIF
 {
     //
     private ArrayList<WordPair> wordpairs;
@@ -28,7 +29,6 @@ public class Control
     public Control()
     {
            wordpairs = new ArrayList();
-           wordPairsToArrayList();
     }
     
     //Herunder ses metoden "addWordPair":
@@ -42,7 +42,7 @@ public class Control
     }
     
     //Herunder ses metoden "wordPairsToArrayList":
-    public void wordPairsToArrayList()
+    public boolean load()
     {
         Scanner scan = null;
         
@@ -53,7 +53,7 @@ public class Control
         
         catch (FileNotFoundException ex)
         {
-            System.out.println("Fejl: " + ex.getMessage());
+            return false;
         }
         
         while(scan.hasNext())
@@ -63,10 +63,11 @@ public class Control
              WordPair wp = new WordPair(words[0], words[1]);
              wordpairs.add(wp);
         }
+        return true;
     }
     
     //
-    public void saveFile()
+    public boolean save()
     {
         PrintWriter pw;
         
@@ -86,6 +87,7 @@ public class Control
         {
             System.out.println("Fejl: " + ex.getMessage());
         }
+        return true;
     }
     
     public String getRandomQuestion()
@@ -151,7 +153,72 @@ public class Control
             {
                 answer = wordpairs.get(i).getDanishWord();
             }
+            
+            else
+            {
+                answer = "Nothing";
+            }
         }
         return answer;
+    }
+    
+    //
+    public int size()
+    {
+        return wordpairs.size();
+    }
+    
+    //Denne metode vil slette et ordpar fra ArrayListen og tekstfilen.
+    public boolean delete(String question)
+    {
+        for(int i = 0; i < wordpairs.size(); i++)
+        {
+            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
+            {
+                 wordpairs.remove(i);
+                 save();
+                 return true;
+            }
+                
+            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
+            {
+                wordpairs.remove(i);
+                save();
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void clear()
+    {
+        wordpairs.clear();
+        save();
+    }
+    
+    public void warningBox(String s)
+    {
+        JOptionPane.showConfirmDialog(null, s);
+        
+        for(int i = -1; i < 3; i++)
+        {
+        
+        if(i == JOptionPane.YES_OPTION)
+        {
+            clear();
+        }
+        else if(i == JOptionPane.NO_OPTION)
+        {
+            save();
+        }
+        else if(i == JOptionPane.CANCEL_OPTION)
+        {
+            save();
+        }
+        else if(i == JOptionPane.CLOSED_OPTION)
+        {
+            save();
+        }
+        }
     }
 }
