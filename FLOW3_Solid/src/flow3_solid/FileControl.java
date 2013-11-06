@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package flow3_solid;
 
+//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -11,11 +9,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author Søren
+ * Flow 3 - "Solid"
+ * Udarbejdet af:
+ * Søren og Laura
+ * Onsdag 06.11.2013
  */
+
 public class FileControl
 {
+    private WordPairList wordPairList;
+    private ArrayList<WordPair> wordpairs;
+    
+    public FileControl()
+    {
+        
+    }
         
     public boolean load(ArrayList<WordPair> wordpairs)
     {
@@ -23,7 +31,7 @@ public class FileControl
         
         try
         {
-            scan = new Scanner(new FileReader("wordPair.txt"));
+            scan = new Scanner(new FileReader("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt"));
         }
         
         catch (FileNotFoundException ex)
@@ -47,9 +55,9 @@ public class FileControl
         
         try
         {
-            pw = new PrintWriter("wordPair.txt");
+            pw = new PrintWriter("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt");
             
-            for (int i = 0; i < wordpairs.size(); i++)
+            for(int i = 0; i < wordpairs.size(); i++)
             {
                 pw.println(wordpairs.get(i).toString());
             }

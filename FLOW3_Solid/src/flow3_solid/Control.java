@@ -19,147 +19,78 @@ import javax.swing.JOptionPane;
  * Onsdag 06.11.2013
  */
 
+//Denne klasse henviser til alle metoderne fra "WordPairControlIF"-klassen, der findes beskrevet i andre klasser.
 public class Control implements WordPairControlIF
 {
-    //
+    //Herunder ses denne klasses attributter.
     private FileControl fileControl;
-    private ArrayList<WordPair> wordpairs;
-    private String question;
+    private WordPairList wordPairList;
     
-    //Herunder ses konstruktøren "Control":
+    //Herunder ses konstruktøren "Control".
     public Control()
     {
-           wordpairs = new ArrayList();
-           fileControl = new FileControl();
+        //Herunder instantieres klasserne "FileControl" og "WordPairList".
+        fileControl = new FileControl();
+        wordPairList = new WordPairList();
     }
     
-    //Herunder ses metoden "addWordPair":
-    public void addWordPair(String englishWord, String danishWord)
-    {
-        //"WordPair"-klassen instantieres, og der oprettes et nyt objekt kaldet "wordPair".
-        WordPair wordPair = new WordPair(englishWord, danishWord);
-        
-        //Objektet "wordPair" tilføjes til ArrayListen "wordpair".
-        wordpairs.add(wordPair);
-    }
-    
-    
+    //
     public boolean load()
     {
-        return fileControl.load(wordpairs);
+        return fileControl.load(wordPairList.getWordPairs());
     }
     
     //
     public boolean save()
     {
-        return fileControl.save(wordpairs);
+        return fileControl.save(wordPairList.getWordPairs());
     }
     
-    public String getRandomQuestion()
+    //Metoden "addWordPair" hentes fra klassen "FileControl"
+    public void addWordPair(String englishWord, String danishWord)
     {
-        Random randomWord = new Random();
-        int randomNo = randomWord.nextInt(wordpairs.size());
-        WordPair wp = wordpairs.get(randomNo);
-        int a = randomWord.nextInt(2);
-        
-        if(a == 0)
-        {
-            question = wp.getEnglishWord();
-        }
-        else
-        {
-            if(a == 1)
-            {
-                question = wp.getDanishWord();
-            }
-        }
-        return question;
-    }
-    
-    //
-    public boolean checkGuess(String question, String guess)
-    {
-        //
-        for(int i = 0; i < wordpairs.size(); i++)
-        {
-            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
-            {
-                if(wordpairs.get(i).getEnglishWord().equalsIgnoreCase(guess))
-                {
-                    return true;
-                }
-            }
-            
-            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
-            {
-                if(wordpairs.get(i).getDanishWord().equalsIgnoreCase(guess))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    
-    //
-    public String lookup(String question)
-    {
-        //
-        String answer = "Nothing";
-        int i = 0;
-        boolean found = false;
-        while(i <= wordpairs.size() && found == false)
-        {
-            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
-            {
-                answer = wordpairs.get(i).getEnglishWord();
-                found = true;
-                
-            }
-                
-            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
-            {
-                answer = wordpairs.get(i).getDanishWord();
-                found = true;
-            }
-            
-            i++;
-            
-        }
-        return answer;
+        wordPairList.addWordPair(englishWord, danishWord);
     }
     
     //
     public int size()
     {
-        return wordpairs.size();
+        return wordPairList.size();
     }
     
     //Denne metode vil slette et ordpar fra ArrayListen og tekstfilen.
     public boolean delete(String question)
     {
-        for(int i = 0; i < wordpairs.size(); i++)
+        boolean deleted = wordPairList.delete(question);
+        if(deleted)
         {
-            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
-            {
-                 wordpairs.remove(i);
-                 save();
-                 return true;
-            }
-                
-            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
-            {
-                wordpairs.remove(i);
-                save();
-                return true;
-            }
+            save();
         }
-        return false;
+        return deleted;
     }
     
+    //
     public void clear()
     {
-        wordpairs.clear();
+        wordPairList.clear();
         save();
+    }
+    
+    //
+    public String getRandomQuestion()
+    {
+        return wordPairList.getRandomQuestion();
+    }
+    
+    //
+    public boolean checkGuess(String question, String guess)
+    {
+        return wordPairList.checkGuess(question, guess);
+    }
+    
+    //
+    public String lookup(String question)
+    {
+        return wordPairList.lookup(question);
     }
 }

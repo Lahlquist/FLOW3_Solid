@@ -1,6 +1,7 @@
 
 package flow3_solid;
 
+//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
 import javax.swing.JOptionPane;
 
 /**
@@ -459,6 +460,10 @@ public class GUI extends javax.swing.JFrame
         
         //
         jLabel1_Feedback.setText("The wordpair is deleted from the collection.");
+        
+        //
+        jTextField1_DanishWord.setText("");
+        jTextField1_EnglishWord.setText("");
     }//GEN-LAST:event_jButton1_DeleteActionPerformed
 
     private void jButton2_ClearAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2_ClearAllActionPerformed
