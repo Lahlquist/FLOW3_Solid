@@ -1,7 +1,7 @@
 
 package flow3_solid;
 
-//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
+//Herunder ses den Java-klasse vi har importeret fra Java's bibliotek:
 import javax.swing.JOptionPane;
 
 /**
@@ -11,8 +11,11 @@ import javax.swing.JOptionPane;
  * Onsdag 06.11.2013
  */
 
+//Denne JFrame-form indeholder ”det synlige program”, samtidig med,
+//at den kalder metoderne fra ”Control”-klassen, der skal få programmets funktioner til at virke.
 public class GUI extends javax.swing.JFrame
 {   
+    //Herunder ses denne JFrames attributter.
     WordPairControlIF control;
     
     //Creates new form GUI
@@ -21,11 +24,12 @@ public class GUI extends javax.swing.JFrame
         initComponents();
         this.control = control;
         
-        //
+        //Hvis "load" returnerer "true", vil følgende tekst dukke op i programmet.
         if(control.load())
         {
             jLabel1_Feedback.setText("THE FILE IS SUCCESFULLY LOADED! :)");
         }
+        //(...) hvis det returnerer "false", vil følgende tekst dukke op i programmet.
         else
         {
             jLabel1_Feedback.setText("THE FILE COULD NOT BE LOADED! :(");
@@ -374,20 +378,19 @@ public class GUI extends javax.swing.JFrame
 
     private void jButton1_SaveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_SaveActionPerformed
     {//GEN-HEADEREND:event_jButton1_SaveActionPerformed
-        //Når der trykkes på "Save", skal de to ord først og fremmest hentes af programmet.
+        //Når der trykkes på "Save", bliver de to ord først og fremmest hentet af programmet.
         String englishWord = jTextField1_EnglishWord.getText();
         String danishWord = jTextField1_DanishWord.getText();
         
-        //Herunder kaldes "addWordPair"-metoden fra "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
+        //Her kaldes "add"-metoden fra "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
         control.add(englishWord, danishWord);
         
-        //Herefter kaldes metoden "saveFile" fra "Control"-klassen, der gemmer i en tekstfil.
+        //Her kaldes metoden "save" fra "Control"-klassen, der gemmer i en tekstfil.
         control.save();
         
-        //
         jLabel1_Feedback.setText(englishWord + " and " + danishWord + " is saved as a wordpair.");
         
-        //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save":
+        //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save".
         jTextField1_EnglishWord.setText("");
         jTextField1_DanishWord.setText("");
     }//GEN-LAST:event_jButton1_SaveActionPerformed
@@ -412,26 +415,23 @@ public class GUI extends javax.swing.JFrame
         //Denne "getText"-metode, henter teksten fra følgende tekstfelt, når der trykkes på "Look Up"-knappen.
         String theWordIRemember = jTextField1_TheWordIRemember.getText();
         
-        //
         jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember) + " is the corresponding word to " + theWordIRemember + ".");
         
-        //
         jTextField1_TheWordIRemember.setText("");
     }//GEN-LAST:event_jButton1_LookUpActionPerformed
 
     private void jButton1_GuessActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GuessActionPerformed
     {//GEN-HEADEREND:event_jButton1_GuessActionPerformed
-        //Denne "getText"-metode, henter teksten fra de to felter, når der trykkes på "Guess"-knappen.
         String question = jTextField1_Question.getText();
         String guess = jTextField1_Answer.getText();
         
         //Herunder ses en "if/else"-erklæring.
-        //Hvis "checkGuess"-metoden, fra "Control"-klassen, er true, så gives der besked om dette i følgende jLabel.
+        //Hvis "checkGuess"-metoden, fra "Control"-klassen, er "true", så gives der besked om dette i følgende jLabel.
         if(control.checkGuess(question, guess))
         {
             jLabel1_CorrectOrIncorrectGuess.setText("Right! " + question + " and " + guess + " is a wordpair.");
         }
-        //Ellers, hvis denne er false, gives der besked om dette i samme jLabel.
+        //Ellers, hvis denne er "false", gives der besked om dette i samme jLabel.
         else
         {
             jLabel1_CorrectOrIncorrectGuess.setText("Wrong! " + question + " and " + guess + " is NOT a wordpair.");
@@ -444,34 +444,31 @@ public class GUI extends javax.swing.JFrame
 
     private void jButton3_QuantityActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3_QuantityActionPerformed
     {//GEN-HEADEREND:event_jButton3_QuantityActionPerformed
-        //
+        //Når der trykkes på "Quantity"-knappen, returneres størrelsen på ArrayListen.
         jLabel1_Feedback.setText("The quantity of wordpairs is " + control.size());
     }//GEN-LAST:event_jButton3_QuantityActionPerformed
 
     private void jButton1_DeleteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_DeleteActionPerformed
     {//GEN-HEADEREND:event_jButton1_DeleteActionPerformed
-        //
         String word1 = jTextField1_EnglishWord.getText();
         String word2 = jTextField1_DanishWord.getText();
         
-        //
         control.delete(word1);
         control.delete(word2);
         control.save();
         
-        //
         jLabel1_Feedback.setText("The wordpair is deleted from the collection.");
         
-        //
         jTextField1_DanishWord.setText("");
         jTextField1_EnglishWord.setText("");
     }//GEN-LAST:event_jButton1_DeleteActionPerformed
 
     private void jButton2_ClearAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2_ClearAllActionPerformed
     {//GEN-HEADEREND:event_jButton2_ClearAllActionPerformed
-        //
+        //Når der trykkes på "Clear All"-knappen, kommer der et "JOptionPane" op med en advarsel.
         int i = JOptionPane.showConfirmDialog(null, "DO YOU REALLY WANT TO CLEAR THE WHOLE COLLECTION?");
         
+        //Hvis der trykkes på "Yes"-knappen, slettes hele ArrayListen og tekstfilen.
         if(i == JOptionPane.YES_OPTION)
         {
             control.clear();

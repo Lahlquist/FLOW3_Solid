@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * Onsdag 06.11.2013
  */
 
-//Denne klasse henviser til alle metoderne fra "WordPairControlIF"-klassen, der findes beskrevet i andre klasser.
+//Denne klasse ”peger” på alle de metoder der findes i programmet, men som er erklæret i andre klasser.
 public class Control implements WordPairControlIF
 {
     //Herunder ses denne klasses attributter.
@@ -34,55 +34,47 @@ public class Control implements WordPairControlIF
         wordPairList = new WordPairList();
     }
     
-    //
+    //Herunder erklæres metoden "load" der kalder metoden "load" på klassen "FileControl".
     public boolean load()
     {
         return fileControl.load(wordPairList.getWordPairs());
     }
     
-    //
     public boolean save()
     {
         return fileControl.save(wordPairList.getWordPairs());
     }
     
-    //Metoden "addWordPair" hentes fra klassen "FileControl"
     public void add(String englishWord, String danishWord)
     {
         wordPairList.add(englishWord, danishWord);
     }
     
-    //
     public int size()
     {
         return wordPairList.size();
     }
     
-    //Denne metode vil slette et ordpar fra ArrayListen og tekstfilen.
     public boolean delete(String question)
     {
         return wordPairList.delete(question);
     }
     
-    //
     public void clear()
     {
         wordPairList.clear();
     }
     
-    //
     public String getRandomQuestion()
     {
         return wordPairList.getRandomQuestion();
     }
     
-    //
     public boolean checkGuess(String question, String guess)
     {
         return wordPairList.checkGuess(question, guess);
     }
     
-    //
     public String lookup(String question)
     {
         return wordPairList.lookup(question);

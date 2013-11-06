@@ -8,6 +8,9 @@ package flow3_solid;
  * Onsdag 06.11.2013
  */
 
+//Dette Java Interface indeholder alle de metoder, der var fastlagt fra starten,
+//og som vi derfor skulle implementere i vores ”Control”-klasse,
+//for at det er muligt at bytte GUI med andre grupper.
 public interface WordPairControlIF
 {
     /** 

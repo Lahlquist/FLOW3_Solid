@@ -15,16 +15,10 @@ import java.util.Scanner;
  * Onsdag 06.11.2013
  */
 
+//Denne klasse indeholder metoderne ”load” og ”save”, som har at gøre med ArrayListen og tekstfilen.
 public class FileControl
 {
-    private WordPairList wordPairList;
-    private ArrayList<WordPair> wordpairs;
-    
-    public FileControl()
-    {
-        
-    }
-        
+    //Herunder erklæres metoden "load".
     public boolean load(ArrayList<WordPair> wordpairs)
     {
         Scanner scan = null;
@@ -49,6 +43,7 @@ public class FileControl
         return true;
     }
     
+    //Herunder erklæres metoden "save".
     public boolean save(ArrayList<WordPair> wordpairs)
     {
         PrintWriter pw;

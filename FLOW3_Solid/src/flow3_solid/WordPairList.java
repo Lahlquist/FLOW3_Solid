@@ -12,29 +12,31 @@ import java.util.Random;
  * Onsdag 06.11.2013
  */
 
+//Denne klasse indeholder alle de metoder, som har at gøre med ArrayListen.
 public class WordPairList
 {
+    //Herunder ses denne klasses attributter.
     private ArrayList<WordPair> wordpairs;
     private String question;
     private WordPair wordPair;
     
+    //Herunder ses konstruktøren "WordPairList", hvori der sker to instantieringer.
     public WordPairList()
     {
         wordpairs = new ArrayList<>();
         wordPair = new WordPair(question, question);
     }
     
+    //Herunder erklæres metoden "getWordPairs".
     public ArrayList<WordPair> getWordPairs()
     {
         return wordpairs;
     }
     
+    //Denne metode tilføjer "wordPair" til ArrayListen.
     public void add(String englishWord, String danishWord)
     {
-        //"WordPair"-klassen instantieres, og der oprettes et nyt objekt kaldet "wordPair".
         WordPair wordPair = new WordPair(englishWord, danishWord);
-        
-        //Objektet "wordPair" tilføjes til ArrayListen "wordpair".
         wordpairs.add(wordPair);
     }
     
@@ -63,6 +65,7 @@ public class WordPairList
         return false;
     }
     
+    //Denne metode vil slette hele ArrayListen og hele tekstfilen.
     public void clear()
     {
         wordpairs.clear();
@@ -91,7 +94,6 @@ public class WordPairList
     
     public boolean checkGuess(String question, String guess)
     {
-        //
         for(int i = 0; i < wordpairs.size(); i++)
         {
             if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
@@ -115,7 +117,6 @@ public class WordPairList
     
     public String lookup(String question)
     {
-        //
         String answer = "Nothing";
         int i = 0;
         boolean found = false;
