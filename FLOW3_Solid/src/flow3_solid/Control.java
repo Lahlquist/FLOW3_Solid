@@ -195,30 +195,4 @@ public class Control implements WordPairControlIF
         wordpairs.clear();
         save();
     }
-    
-    public void warningBox(String s)
-    {
-        JOptionPane.showConfirmDialog(null, s);
-        
-        for(int i = -1; i < 3; i++)
-        {
-        
-        if(i == JOptionPane.YES_OPTION)
-        {
-            clear();
-        }
-        else if(i == JOptionPane.NO_OPTION)
-        {
-            save();
-        }
-        else if(i == JOptionPane.CANCEL_OPTION)
-        {
-            save();
-        }
-        else if(i == JOptionPane.CLOSED_OPTION)
-        {
-            save();
-        }
-        }
-    }
 }
