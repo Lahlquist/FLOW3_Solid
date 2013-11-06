@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class Control implements WordPairControlIF
 {
     //
+    private FileControl fileControl;
     private ArrayList<WordPair> wordpairs;
     private String question;
     
@@ -29,6 +30,7 @@ public class Control implements WordPairControlIF
     public Control()
     {
            wordpairs = new ArrayList();
+           fileControl = new FileControl();
     }
     
     //Herunder ses metoden "addWordPair":
@@ -41,53 +43,16 @@ public class Control implements WordPairControlIF
         wordpairs.add(wordPair);
     }
     
-    //Herunder ses metoden "wordPairsToArrayList":
+    
     public boolean load()
     {
-        Scanner scan = null;
-        
-        try
-        {
-            scan = new Scanner(new FileReader("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt"));
-        }
-        
-        catch (FileNotFoundException ex)
-        {
-            return false;
-        }
-        
-        while(scan.hasNext())
-        {
-             String str = scan.nextLine();
-             String[] words = str.split(",");
-             WordPair wp = new WordPair(words[0], words[1]);
-             wordpairs.add(wp);
-        }
-        return true;
+        return fileControl.load(wordpairs);
     }
     
     //
     public boolean save()
     {
-        PrintWriter pw;
-        
-        try
-        {
-            pw = new PrintWriter("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt");
-            
-            for (int i = 0; i < wordpairs.size(); i++)
-            {
-                pw.println(wordpairs.get(i).toString());
-            }
-            
-            pw.close(); 
-        }
-        
-        catch (FileNotFoundException ex)
-        {
-            System.out.println("Fejl: " + ex.getMessage());
-        }
-        return true;
+        return fileControl.save(wordpairs);
     }
     
     public String getRandomQuestion()
@@ -140,24 +105,26 @@ public class Control implements WordPairControlIF
     public String lookup(String question)
     {
         //
-        String answer = "";
-        
-        for(int i = 0; i < wordpairs.size(); i++)
+        String answer = "Nothing";
+        int i = 0;
+        boolean found = false;
+        while(i <= wordpairs.size() && found == false)
         {
             if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
             {
                 answer = wordpairs.get(i).getEnglishWord();
+                found = true;
+                
             }
                 
             if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
             {
                 answer = wordpairs.get(i).getDanishWord();
+                found = true;
             }
             
-            else
-            {
-                answer = "Nothing";
-            }
+            i++;
+            
         }
         return answer;
     }
