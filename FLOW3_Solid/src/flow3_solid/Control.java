@@ -47,9 +47,9 @@ public class Control implements WordPairControlIF
     }
     
     //Metoden "addWordPair" hentes fra klassen "FileControl"
-    public void addWordPair(String englishWord, String danishWord)
+    public void add(String englishWord, String danishWord)
     {
-        wordPairList.addWordPair(englishWord, danishWord);
+        wordPairList.add(englishWord, danishWord);
     }
     
     //
@@ -61,19 +61,13 @@ public class Control implements WordPairControlIF
     //Denne metode vil slette et ordpar fra ArrayListen og tekstfilen.
     public boolean delete(String question)
     {
-        boolean deleted = wordPairList.delete(question);
-        if(deleted)
-        {
-            save();
-        }
-        return deleted;
+        return wordPairList.delete(question);
     }
     
     //
     public void clear()
     {
         wordPairList.clear();
-        save();
     }
     
     //

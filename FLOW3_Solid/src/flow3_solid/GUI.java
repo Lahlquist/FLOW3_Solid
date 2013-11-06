@@ -379,7 +379,7 @@ public class GUI extends javax.swing.JFrame
         String danishWord = jTextField1_DanishWord.getText();
         
         //Herunder kaldes "addWordPair"-metoden fra "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
-        control.addWordPair(englishWord, danishWord);
+        control.add(englishWord, danishWord);
         
         //Herefter kaldes metoden "saveFile" fra "Control"-klassen, der gemmer i en tekstfil.
         control.save();
@@ -457,6 +457,7 @@ public class GUI extends javax.swing.JFrame
         //
         control.delete(word1);
         control.delete(word2);
+        control.save();
         
         //
         jLabel1_Feedback.setText("The wordpair is deleted from the collection.");

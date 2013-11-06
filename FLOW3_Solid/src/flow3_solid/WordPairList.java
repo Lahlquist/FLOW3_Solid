@@ -29,7 +29,7 @@ public class WordPairList
         return wordpairs;
     }
     
-    public void addWordPair(String englishWord, String danishWord)
+    public void add(String englishWord, String danishWord)
     {
         //"WordPair"-klassen instantieres, og der oprettes et nyt objekt kaldet "wordPair".
         WordPair wordPair = new WordPair(englishWord, danishWord);

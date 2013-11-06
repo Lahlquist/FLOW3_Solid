@@ -14,7 +14,7 @@ public interface WordPairControlIF
      * Post: A new word pair is added to the existing collection of word
      * pairs
      */
-    void addWordPair(String englishWord, String danishWord);
+    void add(String englishWord, String danishWord);
 
     /**  
      * Post: A word pair corresponding to the question is removed from the collection.
