@@ -12,7 +12,8 @@ import java.util.Scanner;
  * Flow 3 - "Solid"
  * Udarbejdet af:
  * Søren og Laura
- * Onsdag 06.11.2013
+ * Onsdag 06.11.2013 #Part 1
+ * Tirsdag 19.11.2013 #Part 2
  */
 
 //Denne klasse indeholder metoderne ”load” og ”save”, som har at gøre med ArrayListen og tekstfilen.

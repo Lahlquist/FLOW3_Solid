@@ -16,11 +16,12 @@ import javax.swing.JOptionPane;
  * Flow 3 - "Solid"
  * Udarbejdet af:
  * Søren og Laura
- * Onsdag 06.11.2013
+ * Onsdag 06.11.2013 #Part 1
+ * Tirsdag 19.11.2013 #Part 2
  */
 
 //Denne klasse ”peger” på alle de metoder der findes i programmet, men som er erklæret i andre klasser.
-public class Control implements WordPairControlIF
+public class Control implements WordPairControlIF //implements QuizzControlIF
 {
     //Herunder ses denne klasses attributter.
     private FileControl fileControl;

@@ -5,7 +5,8 @@ package flow3_solid;
  * Flow 3 - "Solid"
  * Udarbejdet af:
  * Søren og Laura
- * Onsdag 06.11.2013
+ * Onsdag 06.11.2013 #Part 1
+ * Tirsdag 19.11.2013 #Part 2
  */
 
 //Dette Java Interface indeholder alle de metoder, der var fastlagt fra starten,
