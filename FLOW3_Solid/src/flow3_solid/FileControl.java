@@ -67,4 +67,29 @@ public class FileControl
         }
         return true;
     }
+    
+    //
+    public String getGameNames(ArrayList<Game> games)
+    {
+        Scanner scan = null;
+        
+        try
+        {
+            scan = new Scanner(new FileReader("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/games.txt"));
+        }
+        
+        catch (FileNotFoundException ex)
+        {
+            return "";
+        }
+        
+        while(scan.hasNext())
+        {
+             String str = scan.nextLine();
+             String[] theGames = str.split(",");
+             Game g = new Game(theGames[0]);
+             games.add(g);
+        }
+        return "";
+    }
 }

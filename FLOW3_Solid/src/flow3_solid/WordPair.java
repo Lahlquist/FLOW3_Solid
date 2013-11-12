@@ -1,10 +1,6 @@
 
 package flow3_solid;
 
-//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
 /**
  * Flow 3 - "Solid"
  * Udarbejdet af:

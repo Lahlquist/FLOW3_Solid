@@ -1,17 +1,6 @@
 
 package flow3_solid;
 
-//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-
 /**
  * Flow 3 - "Solid"
  * Udarbejdet af:
