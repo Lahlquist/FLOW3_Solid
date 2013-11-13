@@ -25,46 +25,55 @@ public class Control implements WordPairControlIF //implements QuizzControlIF
     }
     
     //Herunder erklæres metoden "load" der kalder metoden "load" på klassen "FileControl".
+    @Override
     public boolean load()
     {
         return fileControl.load(wordPairList.getWordPairs());
     }
     
+    @Override
     public boolean save()
     {
         return fileControl.save(wordPairList.getWordPairs());
     }
     
+    @Override
     public void add(String englishWord, String danishWord)
     {
         wordPairList.add(englishWord, danishWord);
     }
     
+    @Override
     public int size()
     {
         return wordPairList.size();
     }
     
+    @Override
     public boolean delete(String question)
     {
         return wordPairList.delete(question);
     }
     
+    @Override
     public void clear()
     {
         wordPairList.clear();
     }
     
+    @Override
     public String getRandomQuestion()
     {
         return wordPairList.getRandomQuestion();
     }
     
+    @Override
     public boolean checkGuess(String question, String guess)
     {
         return wordPairList.checkGuess(question, guess);
     }
     
+    @Override
     public String lookup(String question)
     {
         return wordPairList.lookup(question);

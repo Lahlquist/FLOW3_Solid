@@ -69,7 +69,7 @@ public class FileControl
     }
     
     //
-    public String getGameNames(ArrayList<Game> games)
+    public String[] getGameNames(ArrayList<Game> games)
     {
         Scanner scan = null;
         
