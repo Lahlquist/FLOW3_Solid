@@ -2,6 +2,7 @@
 package flow3_solid;
 
 //Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -19,6 +20,42 @@ import java.util.Scanner;
 //Denne klasse indeholder metoderne ”load” og ”save”, som har at gøre med ArrayListen og tekstfilen.
 public class FileControl
 {
+    public void findGames(ArrayList<Game> games)
+    {
+        String name = "";
+        String path = ".";
+
+        String fileName = null;
+        File folder = new File(path);
+        File[] listOfFiles = folder.listFiles();
+
+        for (int i = 0; i < listOfFiles.length; i++)
+        {
+
+            if (listOfFiles[i].isFile())
+            {
+                fileName = listOfFiles[i].getName();
+                if (fileName.endsWith(".txt") || fileName.endsWith(".TXT"))
+                {
+                    for(i = 0; i<fileName.length(); i++)
+                    {
+                        
+                        if(fileName.charAt(i) == '.')
+                        {
+                            name = fileName.substring(0, i);
+                            Game game = new Game(name);
+                            games.add(game);
+                            System.out.println(games);
+                        }
+                    }
+                    
+ 
+                }
+            }
+
+        }
+    }
+    
     //Herunder erklæres metoden "load".
     public boolean load(ArrayList<WordPair> wordpairs)
     {
@@ -26,7 +63,7 @@ public class FileControl
         
         try
         {
-            scan = new Scanner(new FileReader("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt"));
+            scan = new Scanner(new FileReader("WordPair.txt"));
         }
         
         catch (FileNotFoundException ex)
@@ -51,7 +88,7 @@ public class FileControl
         
         try
         {
-            pw = new PrintWriter("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/wordPair.txt");
+            pw = new PrintWriter("wordPair.txt");
             
             for(int i = 0; i < wordpairs.size(); i++)
             {
@@ -68,28 +105,26 @@ public class FileControl
         return true;
     }
     
-    //
-    public String[] getGameNames(ArrayList<Game> games)
+    public boolean createGame(String name)
     {
-        Scanner scan = null;
+      
+        PrintWriter pw;
         
         try
         {
-            scan = new Scanner(new FileReader("/Users/Ahlquist/NetBeansProjects/FLOW3_Solid/games.txt"));
+            
+            pw = new PrintWriter(name+".txt");
+            pw.println(name);
+            
+            
+            pw.close(); 
         }
         
         catch (FileNotFoundException ex)
         {
-            return "";
+            System.out.println("Fejl: " + ex.getMessage());
         }
-        
-        while(scan.hasNext())
-        {
-             String str = scan.nextLine();
-             String[] theGames = str.split(",");
-             Game g = new Game(theGames[0]);
-             games.add(g);
-        }
-        return "";
+        return true;
     }
+    
 }

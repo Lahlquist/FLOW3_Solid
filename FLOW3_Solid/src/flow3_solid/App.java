@@ -21,5 +21,6 @@ public class App
         //"GUI" instantieres, og sættes derefter til at være synlig ved at kalde metoden "setVisible".
         GUI gui = new GUI(c);
         gui.setVisible(true);
+        
     }
 }

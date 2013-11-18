@@ -24,10 +24,23 @@ public class GameList
                 game = new Game(name);
             }
     
+    public ArrayList<Game> getGames()
+    {
+        return games;
+    }
+    
     public boolean addGame(String name)
     {   
+//        String nam = "";
         if(isANewGameName(name))
         {
+//            for(int i = 0; i<name.length(); i++)
+//            {
+//                if(name.charAt(i) == '.')
+//                {
+//                    nam = name.substring(0, i);
+//                }
+//            }
             Game theGameName = new Game(name);
             games.add(theGameName);
         }
@@ -46,45 +59,39 @@ public class GameList
         return newGameName;
     }
     
-//    * Pre: The name passed corresponds to a selectable game
-//    * Post: The existing collection of word pairs is cleared.
-    public void selectGame(String gameName)
+    
+    
+    public String[] getGameNames()
     {
+        String[] arr;
+        arr = new String[games.size()];
         
+        
+        for(int i = 0; i<games.size(); i++)
+        {
+            arr[i] = games.get(i).getName();
+        }
+        return arr;
     }
     
+    
+    
+
+//    * Pre: The name passed corresponds to a selectable game
+//    * Post: The existing collection of word pairs is cleared.
+//    public void selectGame(String gameName)
+//    {  
+//    }
+    
 //    * Returns the name of the game presently selected. If no game is selected it returns null.
-    public String getSelectedGameName()
-    {
-        
-    }
+//    public String getSelectedGameName()
+//    {  
+//    }
     
 //    * Returns the answer corresponding to the passed question. 
 //    * If the question word does not exist null is returned  
 //    * If a game has not been selected null is returned (NB! Extra)
-    public String lookup(String question)
-    {
-//        String answer = "Nothing";
-//        int i = 0;
-//        boolean found = false;
-//        while(i < wordpairs.size() && found == false)
-//        {
-//            if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))
-//            {
-//                answer = wordpairs.get(i).getEnglishWord();
-//                found = true;
-//                
-//            }
-//                
-//            if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
-//            {
-//                answer = wordpairs.get(i).getDanishWord();
-//                found = true;
-//            }
-//            
-//            i++;
-//            
-//        }
-//        return answer;
-    }
+//    public String lookup(String question)
+//    {
+//    }
 }

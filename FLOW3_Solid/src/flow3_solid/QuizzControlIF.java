@@ -24,12 +24,12 @@ public interface QuizzControlIF extends WordPairControlIF
     * Pre: The name passed corresponds to a selectable game
     * Post: The existing collection of word pairs is cleared.
     */
-    void selectGame(String gameName);
-
-    /**
-    * Returns the name of the game presently selected. If no game is selected it returns null.
-    */
-    String getSelectedGameName();
+//    void selectGame(String gameName);
+//
+//    /**
+//    * Returns the name of the game presently selected. If no game is selected it returns null.
+//    */
+//    String getSelectedGameName();
 
     /**
     * Post: A new game with the passed name is created

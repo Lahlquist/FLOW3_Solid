@@ -10,11 +10,12 @@ package flow3_solid;
  */
 
 //Denne klasse ”peger” på alle de metoder der findes i programmet, men som er erklæret i andre klasser.
-public class Control implements WordPairControlIF //implements QuizzControlIF
+public class Control implements QuizzControlIF
 {
     //Herunder ses denne klasses attributter.
     private FileControl fileControl;
     private WordPairList wordPairList;
+    private GameList gameList;
     
     //Herunder ses konstruktøren "Control".
     public Control()
@@ -22,6 +23,8 @@ public class Control implements WordPairControlIF //implements QuizzControlIF
         //Herunder instantieres klasserne "FileControl" og "WordPairList".
         fileControl = new FileControl();
         wordPairList = new WordPairList();
+        gameList = new GameList();
+        fileControl.findGames(gameList.getGames());
     }
     
     //Herunder erklæres metoden "load" der kalder metoden "load" på klassen "FileControl".
@@ -78,4 +81,20 @@ public class Control implements WordPairControlIF //implements QuizzControlIF
     {
         return wordPairList.lookup(question);
     }
+    
+    public boolean addGame(String name)
+    {
+        
+        
+        boolean status = gameList.addGame(name);
+        fileControl.createGame(name);
+        return status;
+        
+    }
+    
+    public String[] getGameNames()
+    {
+        return gameList.getGameNames();
+    }
+
 }
