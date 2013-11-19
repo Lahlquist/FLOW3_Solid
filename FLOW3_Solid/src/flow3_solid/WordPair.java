@@ -24,6 +24,7 @@ public class WordPair
     }
 
     //Herunder erklæres metoden "toString".
+    @Override
     public String toString()
     {
         return englishWord + "," + danishWord;

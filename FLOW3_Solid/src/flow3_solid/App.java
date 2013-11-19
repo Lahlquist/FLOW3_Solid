@@ -9,7 +9,7 @@ package flow3_solid;
  * Tirsdag 19.11.2013 #Part 2
  */
 
-//Denne klasse har ansvaret for at køre GUI og instantierer Control-klassen.
+//Denne klasse har ansvaret for at køre GUI og instantiere Control-klassen.
 public class App
 {
     //Herunder ses main-metoden.
@@ -21,6 +21,5 @@ public class App
         //"GUI" instantieres, og sættes derefter til at være synlig ved at kalde metoden "setVisible".
         GUI gui = new GUI(c);
         gui.setVisible(true);
-        
     }
 }

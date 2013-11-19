@@ -17,25 +17,25 @@ import java.util.Scanner;
  * Tirsdag 19.11.2013 #Part 2
  */
 
-//Denne klasse indeholder metoderne ”load” og ”save”, som har at gøre med ArrayListen og tekstfilen.
+//Denne klasse indeholder metoder, der har at gøre med ArrayListen og tekstfilerne.
 public class FileControl
 {
+    //Herunder erklæres metoden "findGames".
     public void findGames(ArrayList<Game> games)
     {
-        String name = "";
+        String name;
         String path = ".";
-
-        String fileName = null;
+        String fileName;
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++)
+        for(int i = 0; i < listOfFiles.length; i++)
         {
-            if (listOfFiles[i].isFile())
+            if(listOfFiles[i].isFile())
             {
                 fileName = listOfFiles[i].getName();
                 
-                if (fileName.endsWith(".txt") || fileName.endsWith(".TXT"))
+                if(fileName.endsWith(".txt") || fileName.endsWith(".TXT"))
                 {
                     for(int j = 0; j<fileName.length(); j++)
                     {
@@ -55,7 +55,7 @@ public class FileControl
     //Herunder erklæres metoden "load".
     public boolean load(ArrayList<WordPair> wordpairs, String currentGame)
     {
-        Scanner scan = null;
+        Scanner scan;
         
         try
         {
@@ -67,6 +67,7 @@ public class FileControl
             return false;
         }
         
+        //Her skannes "næste linje" for automatisk at springe 1. linje over (altså overskriften på spillet), inden while-løkken starter.
         scan.nextLine();
         
         while(scan.hasNext())

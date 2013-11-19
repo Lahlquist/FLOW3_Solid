@@ -37,8 +37,8 @@ public class WordPairList
     //Denne metode tilføjer "wordPair" til ArrayListen.
     public void add(String englishWord, String danishWord)
     {
-        WordPair wordPair = new WordPair(englishWord, danishWord);
-        wordpairs.add(wordPair);
+        WordPair newWordPair = new WordPair(englishWord, danishWord);
+        wordpairs.add(newWordPair);
     }
     
     public int size()
@@ -121,6 +121,7 @@ public class WordPairList
         String answer = "Nothing";
         int i = 0;
         boolean found = false;
+        
         while(i < wordpairs.size() && found == false)
         {
             if(question.equalsIgnoreCase(wordpairs.get(i).getDanishWord()))

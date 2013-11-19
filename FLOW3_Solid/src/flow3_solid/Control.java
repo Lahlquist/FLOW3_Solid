@@ -9,7 +9,7 @@ package flow3_solid;
  * Tirsdag 19.11.2013 #Part 2
  */
 
-//Denne klasse ”peger” på alle de metoder der findes i programmet, men som er erklæret i andre klasser.
+//Denne klasse indeholder alle de metoder, der er beskrevet i de to interfaces.
 public class Control implements QuizzControlIF
 {
     //Herunder ses denne klasses attributter.
@@ -21,14 +21,16 @@ public class Control implements QuizzControlIF
     //Herunder ses konstruktøren "Control".
     public Control()
     {
-        //Herunder instantieres klasserne "FileControl" og "WordPairList".
+        //Herunder instantieres klasserne "FileControl", "WordPairList" og "GameList".
         fileControl = new FileControl();
         wordPairList = new WordPairList();
         gameList = new GameList();
+        
+        //Metoden "findGames" kaldes på klassen "FileControl" med metoden "getGames" som parameter.
         fileControl.findGames(gameList.getGames());
     }
     
-    //Herunder erklæres metoden "load" der kalder metoden "load" på klassen "FileControl".
+    //Herunder erklæres metoden "load", der kalder metoden "load" på klassen "FileControl".
     @Override
     public boolean load()
     {
@@ -87,12 +89,21 @@ public class Control implements QuizzControlIF
     @Override
     public String lookup(String question)
     {
-        return wordPairList.lookup(question);
+        if(currentGame != null)
+        {
+            return wordPairList.lookup(question);
+        }
+        else
+        {
+            return null;
+        }
     }
     
+    @Override
     public boolean addGame(String name)
     {
         boolean status = gameList.addGame(name);
+        
         if(status)
         {
             fileControl.createGame(name);
@@ -100,18 +111,20 @@ public class Control implements QuizzControlIF
         return status;
     }
     
+    @Override
     public String[] getGameNames()
     {
         return gameList.getGameNames();
     }
     
+    @Override
     public void selectGame(String gameName)
     {
         wordPairList.clear();
         this.currentGame = gameName;
-        System.out.println(currentGame);
     }
     
+    @Override
     public String getSelectedGameName()
     {
         return currentGame;

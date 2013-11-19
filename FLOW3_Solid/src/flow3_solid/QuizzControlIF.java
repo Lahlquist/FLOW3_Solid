@@ -9,7 +9,6 @@ package flow3_solid;
  * Tirsdag 19.11.2013 #Part 2
  */
 
-//Dette Java Interface ... ?????????
 public interface QuizzControlIF extends WordPairControlIF
 {
     // rev hau 9-10-2013
@@ -42,5 +41,6 @@ public interface QuizzControlIF extends WordPairControlIF
     * If the question word does not exist null is returned  
     * If a game has not been selected null is returned (NB! Extra)
     */
+    @Override
     String lookup(String question);
 }

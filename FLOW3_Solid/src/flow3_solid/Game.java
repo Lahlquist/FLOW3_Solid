@@ -9,16 +9,20 @@ package flow3_solid;
  * Tirsdag 19.11.2013 #Part 2
  */
 
+//Denne klasse indeholder "get'ere" og "set'ere" for et spil's navn.
 public class Game
 {
+    //Her ses klassens attribut.
     private String name;
     
+    //Herunder ses klassens konstruktør "Game".
     public Game(String name)
     {
         this.name = name;
     }
     
     //Herunder erklæres metoden "toString".
+    @Override
     public String toString()
     {
         return name;

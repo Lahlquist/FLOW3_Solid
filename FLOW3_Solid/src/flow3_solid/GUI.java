@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  */
 
 //Denne JFrame-form indeholder ”det synlige program”, samtidig med,
-//at den kalder metoderne fra ”Control”-klassen, der skal få programmets funktioner til at virke.
+//at den importerer metoderne fra ”Control”-klassen, der skal få programmets funktioner til at virke.
 public class GUI extends javax.swing.JFrame
 {   
-    //Herunder ses denne JFrames attributter.
+    //Herunder ses denne JFrames attribut.
     QuizzControlIF control;
     
     //Creates new form GUI
@@ -24,6 +24,8 @@ public class GUI extends javax.swing.JFrame
     {
         initComponents();
         this.control = control;
+        
+        //Når programmet starter, indhentes de forskellige spil.
         jList1.setListData(control.getGameNames());
     }
 
@@ -186,13 +188,12 @@ public class GUI extends javax.swing.JFrame
                     .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                         .add(32, 32, 32)
                         .add(jTextField2_NewGameName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                         .add(jLabel1_Header, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(87, 87, 87))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 180, Short.MAX_VALUE)
                         .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                                 .add(jLabel1_DanishWord)
@@ -215,7 +216,7 @@ public class GUI extends javax.swing.JFrame
             .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                 .add(10, 10, 10)
                 .add(jLabel1_Feedback, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 752, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 0, Short.MAX_VALUE))
+                .add(0, 8, Short.MAX_VALUE))
         );
         jPanel1_NewPairOfWordsLayout.setVerticalGroup(
             jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -230,8 +231,7 @@ public class GUI extends javax.swing.JFrame
                             .add(jLabel1_EnglishWord)))
                     .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                         .add(28, 28, 28)
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
                         .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -342,7 +342,7 @@ public class GUI extends javax.swing.JFrame
                     .add(jLabel2_Answer)
                     .add(jTextField1_Answer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(62, 62, 62)
-                .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButton1_Guess)
                     .add(jLabel1_CorrectOrIncorrectGuess, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(103, Short.MAX_VALUE))
@@ -449,20 +449,23 @@ public class GUI extends javax.swing.JFrame
         String englishWord = jTextField1_EnglishWord.getText();
         String danishWord = jTextField1_DanishWord.getText();
         
+        //Hvis ordene, der er skrevet i tekstfelterne, er på mere end 0 karakterer, vil følgende metoder kaldes.
         if(englishWord.length() > 0 && danishWord.length() > 0)
         {
-        //Her kaldes "add"-metoden fra "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
-        control.add(englishWord, danishWord);
+            //Her kaldes "add"-metoden på "Control"-klassen, der kopierer det engelske og det danske ord ind i ArrayListen.
+            control.add(englishWord, danishWord);
         
-        //Her kaldes metoden "save" fra "Control"-klassen, der gemmer i en tekstfil.
-        control.save();
+            //Her kaldes metoden "save" på "Control"-klassen, der gemmer i en tekstfil.
+            control.save();
         
-        jLabel1_Feedback.setText(englishWord + " and " + danishWord + " is saved as a wordpair.");
+            jLabel1_Feedback.setText(englishWord + " and " + danishWord + " is saved as a wordpair.");
         }
+        //Hvis ordene ikke er på mere end 0 karakterer, vil følgende information blive givet.
         else
         {
             jLabel1_Feedback.setText("Enter two words!");
         }
+        
         //Herunder sættes de to felter, hvor de nye ord blev skrevet, til at blive blanke, når der trykkes på "Save".
         jTextField1_EnglishWord.setText("");
         jTextField1_DanishWord.setText("");
@@ -471,7 +474,7 @@ public class GUI extends javax.swing.JFrame
     private void jButton1_GiveMeARandomTaskActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_GiveMeARandomTaskActionPerformed
     {//GEN-HEADEREND:event_jButton1_GiveMeARandomTaskActionPerformed
         //Når der trykkes på "Give Me A Random Task"-knappen:
-        //Metoden "getRandomQuestion" fra "Control"-klassen, kopieres ind i variablen "a".
+        //Metoden "getRandomQuestion" på "Control"-klassen, kopieres ind i variablen "a".
         String a = control.getRandomQuestion();
         
         //Herefter sættes den tekst, som "getRandomQuestion"-metoden finder, "a", ind i følgende tekstfelt.
@@ -490,7 +493,14 @@ public class GUI extends javax.swing.JFrame
         
         if(theWordIRemember.length() > 0)
         {
-            jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember) + " is the corresponding word to " + theWordIRemember + ".");
+            if(control.lookup(theWordIRemember) == null)
+            {
+                jLabel1_TheOtherWord.setText("YOU HAVE TO CHOOSE A GAME.");
+            }
+            else
+            {
+                jLabel1_TheOtherWord.setText(control.lookup(theWordIRemember) + " is the corresponding word to " + theWordIRemember + ".");
+            }
         }
         else
         {
@@ -519,10 +529,12 @@ public class GUI extends javax.swing.JFrame
                 jLabel1_CorrectOrIncorrectGuess.setText("Wrong! " + question + " and " + guess + " is NOT a wordpair.");
             }
         }
+        //Hvis intet er indtastet i tekstfeltet, vil følgende information blive givet.
         else
         {
             jLabel1_CorrectOrIncorrectGuess.setText("ENTER A GUESS.");
         }
+        
         //Denne "setText"-metode, clearer de to felter, når der trykkes på "Guess"-knappen.
         jTextField1_Question.setText("");
         jTextField1_Answer.setText("");
@@ -576,15 +588,18 @@ public class GUI extends javax.swing.JFrame
 
     private void jButton1_PlayGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_PlayGameActionPerformed
     {//GEN-HEADEREND:event_jButton1_PlayGameActionPerformed
-        //
+        //Metoden "selectGame" kaldes på klassen "Control" med metoderne "getSelectedValue" og "toString" som parametre.
         control.selectGame(jList1.getSelectedValue().toString());
+        
+        //Når et bestemt spil er valgt, bliver titlen på dette kopieret ind i "overskrifts-labelen".
         jLabel1_Header.setText(control.getSelectedGameName());
     }//GEN-LAST:event_jButton1_PlayGameActionPerformed
 
     private void jButton1_AddGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_AddGameActionPerformed
     {//GEN-HEADEREND:event_jButton1_AddGameActionPerformed
-        //
         String gameName = jTextField2_NewGameName.getText();
+        
+        //Hvis der er indtastet mere end 0 karakterer i tekstfeltet, vil følgende if-sætning med "addGame"-metoden blive kaldt.
         if(gameName.length() > 0)
         {
             if(control.addGame(gameName))
@@ -601,16 +616,15 @@ public class GUI extends javax.swing.JFrame
             jLabel1_Feedback.setText("ENTER A GAME-NAME.");
         }
         
-        //
+        //Når et nyt spil er blevet tilføjet, opdateres jListen indeholdende alle de forskellige spil.
         jList1.setListData(control.getGameNames());
     }//GEN-LAST:event_jButton1_AddGameActionPerformed
 
     private void jTextField2_NewGameNameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField2_NewGameNameActionPerformed
     {//GEN-HEADEREND:event_jTextField2_NewGameNameActionPerformed
-        // TODO add your handling code here:
+        //Dette er blot et tekstfelt, der figurerer i vores GUI.
     }//GEN-LAST:event_jTextField2_NewGameNameActionPerformed
 
-//    //Herunder ses main-metoden i vores JFrame "GUI":
 //    public static void main(String args[])
 //    {
 //        /* Set the Nimbus look and feel */
@@ -646,7 +660,6 @@ public class GUI extends javax.swing.JFrame
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable()
 //        {
-//            //Herunder kaldes metoden "run", der sætter GUI til at være synlig og funktionel:
 //            public void run()
 //            {
 //                new GUI().setVisible(true);

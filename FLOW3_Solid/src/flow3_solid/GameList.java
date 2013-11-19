@@ -1,7 +1,7 @@
 
 package flow3_solid;
 
-//Herunder ses de Java-klasser vi har importeret fra Java's bibliotek:
+//Herunder ses den Java-klasse vi har importeret fra Java's bibliotek:
 import java.util.ArrayList;
 
 /**
@@ -12,12 +12,15 @@ import java.util.ArrayList;
  * Tirsdag 19.11.2013 #Part 2
  */
 
+//Denne klasse indeholder alle de metoder, der har at gøre med ArrayListen, i forhold til de forskellige spil.
 public class GameList
 {
+    //Herunder ses klassens attributter.
     private ArrayList<Game> games;
     private String name;
     private Game game;
     
+    //Her ses konstruktøren "GameList".
     public GameList()
     {
         games = new ArrayList<>();
@@ -50,7 +53,7 @@ public class GameList
         for(int i = 0; i < games.size(); i++)
         {
             if(games.get(i).getName().equalsIgnoreCase(name))
-                newGameName = false;
+            newGameName = false;
         }
         return newGameName;
     }
@@ -66,18 +69,4 @@ public class GameList
         }
         return arr;
     }
-    
-    //* Returns the name of the game presently selected. If no game is selected it returns null.
-//    public String getSelectedGameName()
-//    {  
-//        
-//    }
-//    
-//    * Returns the answer corresponding to the passed question. 
-//    * If the question word does not exist null is returned  
-//    * If a game has not been selected null is returned (NB! Extra)
-//    public String lookup(String question)
-//    {
-//        
-//    }
 }
