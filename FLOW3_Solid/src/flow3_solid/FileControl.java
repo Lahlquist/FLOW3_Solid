@@ -31,28 +31,24 @@ public class FileControl
 
         for (int i = 0; i < listOfFiles.length; i++)
         {
-
             if (listOfFiles[i].isFile())
             {
                 fileName = listOfFiles[i].getName();
+                
                 if (fileName.endsWith(".txt") || fileName.endsWith(".TXT"))
                 {
-                    for(i = 0; i<fileName.length(); i++)
+                    for(int j = 0; j<fileName.length(); j++)
                     {
-                        
-                        if(fileName.charAt(i) == '.')
+                        if(fileName.charAt(j) == '.')
                         {
-                            name = fileName.substring(0, i);
+                            name = fileName.substring(0, j);
                             Game game = new Game(name);
                             games.add(game);
                             System.out.println(games);
                         }
                     }
-                    
- 
                 }
             }
-
         }
     }
     
@@ -105,17 +101,15 @@ public class FileControl
         return true;
     }
     
+    //Herunder erklæres metoden "createGame".
     public boolean createGame(String name)
     {
-      
         PrintWriter pw;
         
         try
         {
-            
             pw = new PrintWriter(name+".txt");
             pw.println(name);
-            
             
             pw.close(); 
         }

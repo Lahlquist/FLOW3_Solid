@@ -1,0 +1,10 @@
+Pair of Words
+House,Hus
+Mouse,Mus
+Table,Bord
+Flower,Blomst
+Colors,Farver
+Class,Klasse
+Theme,Tema
+Water,Vand
+Dictionary,Ordbog

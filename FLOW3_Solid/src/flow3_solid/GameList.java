@@ -19,10 +19,10 @@ public class GameList
     private Game game;
     
     public GameList()
-            {
-                games = new ArrayList<>();
-                game = new Game(name);
-            }
+    {
+        games = new ArrayList<>();
+        game = new Game(name);
+    }
     
     public ArrayList<Game> getGames()
     {
@@ -59,13 +59,10 @@ public class GameList
         return newGameName;
     }
     
-    
-    
     public String[] getGameNames()
     {
         String[] arr;
         arr = new String[games.size()];
-        
         
         for(int i = 0; i<games.size(); i++)
         {
@@ -74,9 +71,6 @@ public class GameList
         return arr;
     }
     
-    
-    
-
 //    * Pre: The name passed corresponds to a selectable game
 //    * Post: The existing collection of word pairs is cleared.
 //    public void selectGame(String gameName)

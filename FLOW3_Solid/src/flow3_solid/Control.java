@@ -84,12 +84,9 @@ public class Control implements QuizzControlIF
     
     public boolean addGame(String name)
     {
-        
-        
         boolean status = gameList.addGame(name);
         fileControl.createGame(name);
         return status;
-        
     }
     
     public String[] getGameNames()

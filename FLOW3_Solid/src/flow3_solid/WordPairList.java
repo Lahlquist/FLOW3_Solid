@@ -127,7 +127,6 @@ public class WordPairList
             {
                 answer = wordpairs.get(i).getEnglishWord();
                 found = true;
-                
             }
                 
             if(question.equalsIgnoreCase(wordpairs.get(i).getEnglishWord()))
@@ -135,9 +134,7 @@ public class WordPairList
                 answer = wordpairs.get(i).getDanishWord();
                 found = true;
             }
-            
             i++;
-            
         }
         return answer;
     }
