@@ -53,13 +53,13 @@ public class FileControl
     }
     
     //Herunder erklæres metoden "load".
-    public boolean load(ArrayList<WordPair> wordpairs)
+    public boolean load(ArrayList<WordPair> wordpairs, String currentGame)
     {
         Scanner scan = null;
         
         try
         {
-            scan = new Scanner(new FileReader("WordPair.txt"));
+            scan = new Scanner(new FileReader(currentGame + ".txt"));
         }
         
         catch (FileNotFoundException ex)
@@ -84,7 +84,7 @@ public class FileControl
         
         try
         {
-            pw = new PrintWriter("wordPair.txt");
+            pw = new PrintWriter(".txt");
             
             for(int i = 0; i < wordpairs.size(); i++)
             {

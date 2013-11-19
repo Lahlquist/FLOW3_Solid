@@ -16,6 +16,7 @@ public class Control implements QuizzControlIF
     private FileControl fileControl;
     private WordPairList wordPairList;
     private GameList gameList;
+    private String currentGame;
     
     //Herunder ses konstruktøren "Control".
     public Control()
@@ -31,7 +32,14 @@ public class Control implements QuizzControlIF
     @Override
     public boolean load()
     {
-        return fileControl.load(wordPairList.getWordPairs());
+        if(currentGame != null)
+        {
+            return fileControl.load(wordPairList.getWordPairs(), currentGame);
+        }
+        else
+        {
+            return false;
+        }
     }
     
     @Override
@@ -85,7 +93,10 @@ public class Control implements QuizzControlIF
     public boolean addGame(String name)
     {
         boolean status = gameList.addGame(name);
-        fileControl.createGame(name);
+        if(status)
+        {
+            fileControl.createGame(name);
+        }
         return status;
     }
     
@@ -93,5 +104,16 @@ public class Control implements QuizzControlIF
     {
         return gameList.getGameNames();
     }
-
+    
+    public void selectGame(String gameName)
+    {
+        wordPairList.clear();
+        this.currentGame = gameName;
+        System.out.println(currentGame);
+    }
+//    
+//    public String getSelectedGameName()
+//    {
+//        
+//    }
 }

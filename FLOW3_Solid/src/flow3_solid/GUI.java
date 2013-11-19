@@ -2,7 +2,6 @@
 package flow3_solid;
 
 //Herunder ses den Java-klasse vi har importeret fra Java's bibliotek:
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +24,7 @@ public class GUI extends javax.swing.JFrame
     {
         initComponents();
         this.control = control;
+        jList1.setListData(control.getGameNames());
     }
 
     /**
@@ -49,7 +49,10 @@ public class GUI extends javax.swing.JFrame
         jButton1_Delete = new javax.swing.JButton();
         jButton2_ClearAll = new javax.swing.JButton();
         jButton3_Quantity = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButton1_LoadWords = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jButton1_PlayGame = new javax.swing.JButton();
         jPanel2_RandomTask = new javax.swing.JPanel();
         jLabel1_Question = new javax.swing.JLabel();
         jLabel2_Answer = new javax.swing.JLabel();
@@ -122,12 +125,23 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
-        jButton1.setText("LOAD WORDS");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        jButton1_LoadWords.setText("LOAD WORDS");
+        jButton1_LoadWords.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                jButton1_LoadWordsActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(jList1);
+
+        jButton1_PlayGame.setText("PLAY GAME");
+        jButton1_PlayGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1_PlayGameActionPerformed(evt);
             }
         });
 
@@ -135,22 +149,9 @@ public class GUI extends javax.swing.JFrame
         jPanel1_NewPairOfWords.setLayout(jPanel1_NewPairOfWordsLayout);
         jPanel1_NewPairOfWordsLayout.setHorizontalGroup(
             jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                .add(76, 76, 76)
-                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                        .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1_EnglishWord)
-                            .add(jLabel1_DanishWord))
-                        .add(47, 47, 47)
-                        .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField1_DanishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField1_EnglishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1_Feedback, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 436, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                .add(0, 0, Short.MAX_VALUE)
-                .add(jButton1)
+                .add(0, 61, Short.MAX_VALUE)
+                .add(jButton1_LoadWords)
                 .add(40, 40, 40)
                 .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButton1_Save, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 158, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -160,25 +161,53 @@ public class GUI extends javax.swing.JFrame
                     .add(jButton2_ClearAll, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jButton3_Quantity, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(94, 94, 94))
+            .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                .add(76, 76, 76)
+                .add(jLabel1_Feedback, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 436, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                        .add(jLabel1_DanishWord)
+                        .add(18, 18, 18)
+                        .add(jTextField1_DanishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                        .add(jLabel1_EnglishWord)
+                        .add(18, 18, 18)
+                        .add(jTextField1_EnglishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton1_PlayGame))
+                .add(35, 35, 35))
         );
         jPanel1_NewPairOfWordsLayout.setVerticalGroup(
             jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
-                .add(80, 80, 80)
-                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1_EnglishWord)
-                    .add(jTextField1_EnglishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField1_DanishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1_DanishWord))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 56, Short.MAX_VALUE)
-                .add(jLabel1_Feedback, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(27, 27, 27)
+                .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                        .add(94, 94, 94)
+                        .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1_EnglishWord)
+                            .add(jTextField1_EnglishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(14, 14, 14)
+                        .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1_DanishWord)
+                            .add(jTextField1_DanishWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
+                        .add(jLabel1_Feedback, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(27, 27, 27))
+                    .add(jPanel1_NewPairOfWordsLayout.createSequentialGroup()
+                        .add(19, 19, 19)
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton1_PlayGame)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jButton1_Save)
-                        .add(jButton1))
+                        .add(jButton1_LoadWords))
                     .add(jButton3_Quantity, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel1_NewPairOfWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -250,7 +279,7 @@ public class GUI extends javax.swing.JFrame
                     .add(jTextField1_Question))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2_RandomTaskLayout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(289, Short.MAX_VALUE)
                 .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2_RandomTaskLayout.createSequentialGroup()
                         .add(jButton1_GiveMeARandomTask)
@@ -278,7 +307,7 @@ public class GUI extends javax.swing.JFrame
                 .add(jPanel2_RandomTaskLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1_Guess)
                     .add(jLabel1_CorrectOrIncorrectGuess, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("RANDOM TASK", jPanel2_RandomTask);
@@ -331,7 +360,7 @@ public class GUI extends javax.swing.JFrame
                     .add(jPanel3_LookUpWordsLayout.createSequentialGroup()
                         .add(193, 193, 193)
                         .add(jLabel1_LookUpWords)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel3_LookUpWordsLayout.setVerticalGroup(
             jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -346,7 +375,7 @@ public class GUI extends javax.swing.JFrame
                 .add(jPanel3_LookUpWordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1_LookUp)
                     .add(jLabel1_TheOtherWord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("LOOK UP WORDS", jPanel3_LookUpWords);
@@ -406,7 +435,7 @@ public class GUI extends javax.swing.JFrame
                         .add(jButton3)))
                 .add(24, 24, 24)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Select Game", jPanel1);
@@ -535,8 +564,8 @@ public class GUI extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jButton2_ClearAllActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void jButton1_LoadWordsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_LoadWordsActionPerformed
+    {//GEN-HEADEREND:event_jButton1_LoadWordsActionPerformed
         if(control.load())
         {
             jLabel1_Feedback.setText("THE FILE IS SUCCESFULLY LOADED!");
@@ -546,12 +575,11 @@ public class GUI extends javax.swing.JFrame
         {
             jLabel1_Feedback.setText("THE FILE COULD NOT BE LOADED!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1_LoadWordsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
        control.addGame(jTextField1.getText());
-       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
@@ -562,8 +590,14 @@ public class GUI extends javax.swing.JFrame
         {
             jTextArea1.append(arr[i]+ "\n");
         }
-        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1_PlayGameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1_PlayGameActionPerformed
+    {//GEN-HEADEREND:event_jButton1_PlayGameActionPerformed
+        //
+        control.selectGame(jList1.getSelectedValue().toString());
+        
+    }//GEN-LAST:event_jButton1_PlayGameActionPerformed
 
 //    //Herunder ses main-metoden i vores JFrame "GUI":
 //    public static void main(String args[])
@@ -610,11 +644,12 @@ public class GUI extends javax.swing.JFrame
 //    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton1_Delete;
     private javax.swing.JButton jButton1_GiveMeARandomTask;
     private javax.swing.JButton jButton1_Guess;
+    private javax.swing.JButton jButton1_LoadWords;
     private javax.swing.JButton jButton1_LookUp;
+    private javax.swing.JButton jButton1_PlayGame;
     private javax.swing.JButton jButton1_Save;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton2_ClearAll;
@@ -630,12 +665,14 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1_TheOtherWord;
     private javax.swing.JLabel jLabel2_Answer;
     private javax.swing.JLabel jLabel2_TheWordIRemember;
+    private javax.swing.JList jList1;
     private javax.swing.JOptionPane jOptionPane1_Warning;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel1_NewPairOfWords;
     private javax.swing.JPanel jPanel2_RandomTask;
     private javax.swing.JPanel jPanel3_LookUpWords;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;

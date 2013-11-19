@@ -1,3 +1,2 @@
-Geography
 Denmark,Copenhagen
 Deutschland,Berlin

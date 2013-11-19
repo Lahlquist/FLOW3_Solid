@@ -30,17 +30,9 @@ public class GameList
     }
     
     public boolean addGame(String name)
-    {   
-//        String nam = "";
+    {
         if(isANewGameName(name))
         {
-//            for(int i = 0; i<name.length(); i++)
-//            {
-//                if(name.charAt(i) == '.')
-//                {
-//                    nam = name.substring(0, i);
-//                }
-//            }
             Game theGameName = new Game(name);
             games.add(theGameName);
         }
@@ -71,21 +63,17 @@ public class GameList
         return arr;
     }
     
-//    * Pre: The name passed corresponds to a selectable game
-//    * Post: The existing collection of word pairs is cleared.
-//    public void selectGame(String gameName)
-//    {  
-//    }
-    
-//    * Returns the name of the game presently selected. If no game is selected it returns null.
+    //* Returns the name of the game presently selected. If no game is selected it returns null.
 //    public String getSelectedGameName()
 //    {  
+//        
 //    }
-    
+//    
 //    * Returns the answer corresponding to the passed question. 
 //    * If the question word does not exist null is returned  
 //    * If a game has not been selected null is returned (NB! Extra)
 //    public String lookup(String question)
 //    {
+//        
 //    }
 }
