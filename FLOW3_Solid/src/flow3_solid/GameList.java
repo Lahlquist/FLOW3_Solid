@@ -35,8 +35,12 @@ public class GameList
         {
             Game theGameName = new Game(name);
             games.add(theGameName);
+            return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     private boolean isANewGameName(String name)
@@ -45,7 +49,7 @@ public class GameList
         
         for(int i = 0; i < games.size(); i++)
         {
-            if(games.get(i).getName().equals(name))
+            if(games.get(i).getName().equalsIgnoreCase(name))
                 newGameName = false;
         }
         return newGameName;

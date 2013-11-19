@@ -29,7 +29,7 @@ public interface QuizzControlIF extends WordPairControlIF
     /**
     * Returns the name of the game presently selected. If no game is selected it returns null.
     */
-    //String getSelectedGameName();
+    String getSelectedGameName();
 
     /**
     * Post: A new game with the passed name is created

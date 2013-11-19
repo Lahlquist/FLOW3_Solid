@@ -67,6 +67,8 @@ public class FileControl
             return false;
         }
         
+        scan.nextLine();
+        
         while(scan.hasNext())
         {
              String str = scan.nextLine();
@@ -78,19 +80,19 @@ public class FileControl
     }
     
     //Herunder erklæres metoden "save".
-    public boolean save(ArrayList<WordPair> wordpairs)
+    public boolean save(ArrayList<WordPair> wordpairs, String currentGame)
     {
         PrintWriter pw;
         
         try
         {
-            pw = new PrintWriter(".txt");
+            pw = new PrintWriter(currentGame + ".txt");
+            pw.println("" + currentGame);
             
             for(int i = 0; i < wordpairs.size(); i++)
             {
                 pw.println(wordpairs.get(i).toString());
             }
-            
             pw.close(); 
         }
         
@@ -108,7 +110,7 @@ public class FileControl
         
         try
         {
-            pw = new PrintWriter(name+".txt");
+            pw = new PrintWriter(name + ".txt");
             pw.println(name);
             
             pw.close(); 
@@ -120,5 +122,4 @@ public class FileControl
         }
         return true;
     }
-    
 }

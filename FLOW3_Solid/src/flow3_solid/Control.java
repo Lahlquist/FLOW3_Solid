@@ -45,7 +45,7 @@ public class Control implements QuizzControlIF
     @Override
     public boolean save()
     {
-        return fileControl.save(wordPairList.getWordPairs());
+        return fileControl.save(wordPairList.getWordPairs(), currentGame);
     }
     
     @Override
@@ -111,9 +111,9 @@ public class Control implements QuizzControlIF
         this.currentGame = gameName;
         System.out.println(currentGame);
     }
-//    
-//    public String getSelectedGameName()
-//    {
-//        
-//    }
+    
+    public String getSelectedGameName()
+    {
+        return currentGame;
+    }
 }
